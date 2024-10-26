@@ -43,6 +43,7 @@ def start_ngrok():
         ngrok.terminate()
         return None
 
+
 @app.route('/')
 def index():
     return render_template('index.html', connections=connections)
@@ -62,6 +63,7 @@ def send_command(index):
 
 if __name__ == "__main__":
     start_server()
-    url = start_ngrok()
-    if url:
-        app.run(host='0.0.0.0', port=5000)
+    # url = start_ngrok()
+    # if url:
+    # app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)
