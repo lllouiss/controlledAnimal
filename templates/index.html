@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Socket-Verbindungsmanager</title>
+</head>
+<body>
+    <h1>Socket-Verbindungsmanager</h1>
+    {% if connections %}
+        {% for conn, address in connections %}
+            <div>
+                <p>Verbindung zu: {{ address[0] }}:{{ address[1] }}</p>
+                <form action="{{ url_for('send_command', index=loop.index0) }}" method="post">
+                    <input type="hidden" name="command" value="hello">
+                    <button type="submit">Hello</button>
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Wartet auf Verbindungen ...</p>
+    {% endif %}
+</body>
+</html>
